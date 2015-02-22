@@ -1,5 +1,11 @@
+"""
+Module for approximating sqrt.
+"""
 
 def sqrt2(x):
+    """
+    Newton's method
+    """
     s = 1.
     kmax = 100
     tol = 1.e-14
