@@ -6,6 +6,13 @@ def sqrt2(x, debug=False):
     """
     Newton's method
     """
+    from numpy import nan
+    if x == 0:
+        return 0.
+    elif x < 0:
+        print "*** Error, x must be nonnegative"
+        return nan
+    assert x > 0. and type(x) is float or type(x) is int, "Unrecognized input"
     s = 1.
     kmax = 100
     tol = 1.e-14
