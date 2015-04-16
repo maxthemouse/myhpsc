@@ -5,7 +5,7 @@ program test1
 
     implicit none
     real(kind=8) :: a,b,int_true
-    integer :: nvals(7), i
+    integer :: nvals(12), i
     real(kind=8), dimension(10) :: x
 
     a = 0.d0
@@ -23,7 +23,7 @@ program test1
     print *, " "  ! blank line
 
     ! values of n to test:
-    do i=1,7
+    do i=1,12
         nvals(i) = 5 * 2**(i-1)
         enddo
 
@@ -34,8 +34,9 @@ contains
     real(kind=8) function f(x)
         implicit none
         real(kind=8), intent(in) :: x 
+	real(kind=8) :: k = 1.0d3
         
-        f = 1.d0 + x**3
+        f = 1.d0 + x**3 + sin(k*x)
     end function f
 
 end program test1
