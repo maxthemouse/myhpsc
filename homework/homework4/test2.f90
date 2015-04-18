@@ -1,16 +1,17 @@
 
-program test1
+program test2
 
     use quadrature, only: trapezoid, error_table, linspace
 
     implicit none
-    real(kind=8) :: a,b,int_true
+    real(kind=8) :: a,b,int_true,k
     integer :: nvals(12), i
     real(kind=8), dimension(10) :: x
 
     a = 0.d0
     b = 2.d0
-    int_true = (b-a) + (b**4 - a**4) / 4.d0
+    k = 1.d3
+    int_true = (b-a) + (b**4 - a**4) / 4.d0 - (1./k) * (cos(k*b) - cos(k*a))
 
     call linspace(x, 0.d0, 2.d0, 10)
     print *, 'linspace test'
@@ -39,4 +40,4 @@ contains
         f = 1.d0 + x**3 + sin(k*x)
     end function f
 
-end program test1
+end program test2
