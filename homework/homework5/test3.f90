@@ -3,7 +3,7 @@ program test
 
     use omp_lib
 
-    use quadrature, only: trapezoid, error_table
+    use quadrature3, only: trapezoid, error_table
     use functions, only: f, fevals, k
 
     implicit none

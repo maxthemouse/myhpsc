@@ -3,7 +3,7 @@ program test
 
     use omp_lib
 
-    use quadrature, only: trapezoid, error_table
+    use quadrature2, only: simpson, error_table
     use functions, only: f, fevals, k
 
     implicit none
@@ -39,7 +39,7 @@ program test
     ! time the call to error_table:
     call system_clock(tclock1)  
     call cpu_time(t1)
-    call error_table(f, a, b, nvals, int_true, trapezoid)
+    call error_table(f, a, b, nvals, int_true, simpson)
     call cpu_time(t2)   
     call system_clock(tclock2, clock_rate)
 
