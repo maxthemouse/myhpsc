@@ -45,11 +45,15 @@ program test
     ! print the number of function evaluations by each thread:
     print '("fevals by Process ",i2,": ",i13)',  proc_num, fevals_proc
 
+
     call MPI_BARRIER(MPI_COMM_WORLD,ierr) ! wait for all process to print
+
+    call MPI_REDUCE(fevals_proc,fevals_total,1,MPI_DOUBLE_PRECISION,MPI_SUM,0, &
+                        MPI_COMM_WORLD,ierr)
 
     if (proc_num==0) then
         ! This is wrong -- part of homework is to fix this:
-        fevals_total = 0   !! need to fix
+        ! fevals_total = 0   !! need to fix
         print '("Total number of fevals: ",i10)', fevals_total
         endif
 
