@@ -11,6 +11,14 @@ test: test.exe
 test.exe: $(OBJECTS)
 	mpif90 $(FFLAGS) $(OBJECTS) -o test.exe
 
+copyvalue: copyvalue.exe
+	mpiexec -n $(NUM_PROCS) copyvalue.exe
+
+copyvalue.exe: copyvalue.f90
+	mpif90 $(FFLAGS) copyvalue.f90 -o copyvalue.exe
+
+
+
 %.o : %.f90
 	mpif90 $(FFLAGS) -c  $< 
 
