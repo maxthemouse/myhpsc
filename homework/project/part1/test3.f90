@@ -17,6 +17,12 @@ program test3
     call MPI_COMM_SIZE(MPI_COMM_WORLD, num_procs, ierr)
     call MPI_COMM_RANK(MPI_COMM_WORLD, proc_num, ierr)
 
+    ! quit if only one process
+    if (num_procs == 1) then
+	print *, "*** Error: need to use at least two processes"
+	go to 100
+    endif
+
     ! All processes set these values so we don't have to broadcast:
     k = 1.d3   ! functions module variable 
     a = 0.d0
@@ -132,7 +138,7 @@ program test3
         print '("Total number of fevals: ",i10)', fevals_total
         endif
 
-
+100 continue
     call MPI_FINALIZE(ierr)
 
 end program test3
