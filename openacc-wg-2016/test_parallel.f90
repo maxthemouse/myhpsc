@@ -16,7 +16,7 @@ program test_parallel
         
     !$acc parallel loop
         do i=1,SIZE
-            a(i)=b(i)+c(i)
+            a(i)=b(i)+c(i)+a(i)
         end do
     !$acc end parallel loop 
 end program test_parallel

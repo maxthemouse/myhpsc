@@ -15,7 +15,7 @@ program test_kernel
         
     !$acc kernels
         do i=1,SIZE
-            a(i)=b(i)+c(i)
+            a(i)=b(i)+c(i)+a(i)
         end do
     !$acc end kernels 
 end program test_kernel     

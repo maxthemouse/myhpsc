@@ -34,7 +34,7 @@ int main (int argc, char *argv[]){
   #pragma acc data copy(Temperature_last) create(Temperature)
   while (dt > MAX_TEMP_ERROR && iteration <= max_iterations){
       // main calculation: average my four neighbors
-      #pragma acc kernels for collapse(2)
+      #pragma acc kernels
       for (i = 1; i <= ROWS; i++)
     	for (j = 1; j <= COLUMNS; j++)
 	      Temperature[i][j] = 0.25 * (Temperature_last[i + 1][j] + Temperature_last[i - 1][j] + 
@@ -42,7 +42,7 @@ int main (int argc, char *argv[]){
       
       dt = 0.0;			// reset largest temperature change 
       // copy grid to old grid for next iteration and find latest dt
-      #pragma acc kernels for collapse(2)
+      #pragma acc kernels
       for (i = 1; i <= ROWS; i++)
 	    for (j = 1; j <= COLUMNS; j++){
 	        dt = fmax (fabs (Temperature[i][j] - Temperature_last[i][j]), dt);

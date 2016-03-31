@@ -12,11 +12,12 @@ int main(){
   int n=1e7; float a = 5./3.;int i;
   float *x = malloc(sizeof(float)*n);
   float *y = malloc(sizeof(float)*n);
+  float temp;
   
   //initialize vectors  
   for (i=0; i<n; i++){
     x[i] = 2.0f;
-    y[i] = (i+1.)*(i-1.);
+    y[i] = (i+1.0)*(i-1.0);
   }
   tick_tock tt;
   tick(&tt);
